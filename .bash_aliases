@@ -9,6 +9,4 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 #GO paths
 export PATH=$PATH:/usr/local/go/bin
 
-# Open tab in same directory (wsl)
-PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
 LS_COLORS=$LS_COLORS:'ow=1;34:' ; export LS_COLORS
