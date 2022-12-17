@@ -2,8 +2,8 @@ local keymap = require('kevin.keymap')
 local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
 
-nnoremap('<C-p>', ':Telescope find_files<CR>')
-nnoremap('<leader>lg', ':Telescope live_grep<CR>')
+nnoremap('<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+nnoremap('<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 
 nnoremap('<C-S><C-S>', ':set invrelativenumber<CR>')
 nnoremap('<C-s>', ':w<CR>')

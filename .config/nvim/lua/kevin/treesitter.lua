@@ -1,11 +1,14 @@
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
+        'c',
+        'cpp',
         'css',
         'graphql',
         'html',
         'javascript',
         'json',
         'lua',
+        'rust',
         'python',
         'tsx',
         'typescript',
