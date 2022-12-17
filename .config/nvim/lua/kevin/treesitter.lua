@@ -4,6 +4,7 @@ require 'nvim-treesitter.configs'.setup {
         'cpp',
         'css',
         'graphql',
+        'help',
         'html',
         'javascript',
         'json',
