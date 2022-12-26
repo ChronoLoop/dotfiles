@@ -114,9 +114,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Only load cmp lsp capabilities when avaiabled
 -- in case you uninstall nvim-cmp
-local success_cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+local success_cmp_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if success_cmp_lsp then
-    capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 local default_config = {
@@ -148,8 +148,30 @@ local servers = {
     'yamlls',
 }
 
-require("mason").setup()
-local mason_lspconfig = require("mason-lspconfig")
+local status_ok, mason = pcall(require, "mason")
+if not status_ok then
+    return
+end
+
+local status_ok_1, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status_ok_1 then
+    return
+end
+
+
+mason.setup({
+    ui = {
+        border = "rounded",
+        icons = {
+            package_installed = "◍",
+            package_pending = "◍",
+            package_uninstalled = "◍",
+        },
+    },
+    log_level = vim.log.levels.INFO,
+    max_concurrent_installers = 4,
+})
+
 mason_lspconfig.setup {
     ensure_installed = servers,
     automatic_installation = true,
