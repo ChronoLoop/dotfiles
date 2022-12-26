@@ -8,6 +8,8 @@ alias dotconf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias dotvim='GIT_DIR=$HOME/dotfiles/ GIT_WORK_TREE=$HOME vim $HOME'
 
 #GO paths
-export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 LS_COLORS=$LS_COLORS:'ow=1;34:' ; export LS_COLORS

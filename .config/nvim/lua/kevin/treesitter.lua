@@ -13,6 +13,7 @@ require 'nvim-treesitter.configs'.setup {
         'python',
         'tsx',
         'typescript',
+        'sql',
         'scss',
         'svelte',
         'go'

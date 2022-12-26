@@ -25,8 +25,12 @@ packer.startup(function(use)
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     -- LSP
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    use {'neovim/nvim-lspconfig', 
+        requires = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim"
+    }
+    }
 
     -- Autocompletion
     use { 'hrsh7th/nvim-cmp', requires = {

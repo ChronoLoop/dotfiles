@@ -133,23 +133,26 @@ end
 
 local servers = {
     'bashls',
+    'clangd',
     'cssls',
-    'html',
     'dockerls',
+    'gopls',
+    'html',
     'jsonls',
+    'pyright',
+    'rust_analyzer',
     'sumneko_lua',
+    'tailwindcss',
+    'tsserver',
     'vimls',
     'yamlls',
-    'tsserver',
-    'gopls',
-    'rust_analyzer',
-    'pyright',
-    'clangd'
 }
 
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.setup {
-    ensure_installed = servers
+require("mason").setup()
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup {
+    ensure_installed = servers,
+    automatic_installation = true,
 }
 
 for _, server in pairs(servers) do
@@ -161,14 +164,3 @@ for _, server in pairs(servers) do
     end
 
 end
-
-lspconfig.gopls.setup(config(
-    {
-        cmd = { "gopls", "serve" },
-        settings = {
-            gopls = {
-                staticcheck = true,
-            },
-        },
-    }
-))
