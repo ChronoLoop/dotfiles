@@ -1,5 +1,6 @@
+-- favorites: nightfly, tokyonight
 require('lualine').setup({
-    options = { theme = 'nightfly', section_separators = '', component_separators = '' },
+    options = { theme = 'tokyonight', section_separators = '', component_separators = '' },
     sections = {
         lualine_c = {
             {
