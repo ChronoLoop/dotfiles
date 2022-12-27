@@ -20,7 +20,7 @@ vim.opt.errorbells = false
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.hidden = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 vim.opt.backup = false
 vim.opt.updatetime = 300
 vim.opt.wrap = false
@@ -40,7 +40,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Don't pass messages to |ins-completion-menu|.
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append('c')
 
 -- ====================================================================================
 -- Theme
@@ -59,10 +59,10 @@ end
 
 local c = require('onedark.colors')
 
-require('onedark').setup {
+require('onedark').setup({
     style = 'darker',
     highlights = {
-        VertSplit = { bg = c.bg_d }
-    }
-}
+        VertSplit = { bg = c.bg_d },
+    },
+})
 require('onedark').load()

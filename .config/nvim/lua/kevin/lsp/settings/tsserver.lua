@@ -1,8 +1,8 @@
 local function organize_imports()
     local params = {
-        command = "_typescript.organizeImports",
+        command = '_typescript.organizeImports',
         arguments = { vim.api.nvim_buf_get_name(0) },
-        title = ""
+        title = '',
     }
     vim.lsp.buf.execute_command(params)
 end
@@ -11,8 +11,8 @@ return {
     commands = {
         OrganizeImports = {
             organize_imports,
-            description = "Organize Imports"
-        }
+            description = 'Organize Imports',
+        },
     },
-    filetype = { 'typescript', 'typescriptreact', 'typescript.tsx' }
+    filetype = { 'typescript', 'typescriptreact', 'typescript.tsx' },
 }

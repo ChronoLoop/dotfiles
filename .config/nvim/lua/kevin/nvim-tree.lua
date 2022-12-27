@@ -1,8 +1,8 @@
-require("nvim-tree").setup({
+require('nvim-tree').setup({
     git = {
         ignore = false,
     },
     filters = {
-        custom = { "^node_modules$" }
-    }
+        custom = { '^node_modules$' },
+    },
 })

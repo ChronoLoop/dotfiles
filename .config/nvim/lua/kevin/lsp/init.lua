@@ -1,9 +1,8 @@
-require 'kevin.lsp.null-ls'
-local lspconfig = require 'lspconfig'
+local lspconfig = require('lspconfig')
 
 -- Global diagnostic config
 vim.diagnostic.config({
-    underline = { severity_limit = "Error" },
+    underline = { severity_limit = 'Error' },
     signs = true,
     update_in_insert = false,
 })
@@ -33,15 +32,13 @@ if success_lsputils then
 end
 
 -- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
             -- disable formatting from tsserver, html, jsonls
-            if client.name == 'tsserver'
-                or client.name == 'jsonls' or client.name == 'html'
-            then
+            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' then
                 return false
             end
 
@@ -49,7 +46,6 @@ local lsp_formatting = function(bufnr)
                 vim.opt_local.expandtab = false
             end
             return true
-
         end,
         bufnr = bufnr,
     })
@@ -59,7 +55,7 @@ local function on_attach(client, bufnr)
     print('Attaching to ' .. client.name)
 
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
+    vim.api.nvim_create_autocmd('BufWritePre', {
         group = augroup,
         buffer = bufnr,
         callback = function()
@@ -68,11 +64,9 @@ local function on_attach(client, bufnr)
     })
     local nmap = function(keys, func, opts)
         local default_opts = { buffer = bufnr }
-        opts = vim.tbl_extend("force", default_opts,
-            opts or {}
-        )
+        opts = vim.tbl_extend('force', default_opts, opts or {})
 
-        vim.keymap.set('n', keys, func)
+        vim.keymap.set('n', keys, func, opts)
     end
 
     nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -87,7 +81,7 @@ local function on_attach(client, bufnr)
     nmap('<leader>p', '', {
         callback = function()
             lsp_formatting(bufnr)
-        end
+        end,
     })
 
     nmap('gr', require('telescope.builtin').lsp_references)
@@ -98,16 +92,7 @@ local function on_attach(client, bufnr)
     nmap('<leader>af', '<cmd>lua vim.lsp.buf.code_action()<CR>')
     nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
-    nmap(
-        '<leader>ls',
-        string.format(
-            '<cmd>lua vim.diagnostic.open_float(%d, %s)<CR>',
-            bufnr,
-            '{ width = 80, focusable = false, border = "single" }'
-        )
-    )
-
-
+    nmap('<leader>ls', string.format('<cmd>lua vim.diagnostic.open_float(%d, %s)<CR>', bufnr, '{ width = 80, focusable = false, border = "single" }'))
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -125,7 +110,7 @@ local default_config = {
 }
 
 local function config(_config)
-    return vim.tbl_deep_extend("force", {
+    return vim.tbl_deep_extend('force', {
         on_attach = on_attach,
         capabilities = capabilities,
     }, _config or {})
@@ -148,34 +133,33 @@ local servers = {
     'yamlls',
 }
 
-local status_ok, mason = pcall(require, "mason")
+local status_ok, mason = pcall(require, 'mason')
 if not status_ok then
     return
 end
 
-local status_ok_1, mason_lspconfig = pcall(require, "mason-lspconfig")
+local status_ok_1, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not status_ok_1 then
     return
 end
 
-
 mason.setup({
     ui = {
-        border = "rounded",
+        border = 'rounded',
         icons = {
-            package_installed = "◍",
-            package_pending = "◍",
-            package_uninstalled = "◍",
+            package_installed = '◍',
+            package_pending = '◍',
+            package_uninstalled = '◍',
         },
     },
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
 })
 
-mason_lspconfig.setup {
+mason_lspconfig.setup({
     ensure_installed = servers,
     automatic_installation = true,
-}
+})
 
 for _, server in pairs(servers) do
     local has_custom_config, server_custom_config = pcall(require, 'kevin.lsp.settings.' .. server)
@@ -184,5 +168,6 @@ for _, server in pairs(servers) do
     else
         lspconfig[server].setup(default_config)
     end
-
 end
+
+require('kevin.lsp.null-ls').setup(on_attach)

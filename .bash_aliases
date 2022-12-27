@@ -6,6 +6,7 @@ alias jumpWindowsUsers="cd /mnt/c/Users/kw_pc"
 alias sourcetmux='tmux source ~/.tmux.conf'
 alias dotconf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias dotvim='GIT_DIR=$HOME/dotfiles/ GIT_WORK_TREE=$HOME vim $HOME'
+alias vimconf='GIT_DIR=$HOME/dotfiles/ GIT_WORK_TREE=$HOME vim $HOME/.config/nvim'
 
 #GO paths
 export GOPATH=$HOME/go

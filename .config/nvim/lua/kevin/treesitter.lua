@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup({
     ensure_installed = {
         'c',
         'cpp',
@@ -16,17 +16,17 @@ require 'nvim-treesitter.configs'.setup {
         'sql',
         'scss',
         'svelte',
-        'go'
+        'go',
     },
     highlight = { enable = true },
     autopairs = {
         enable = true,
     },
     autotag = {
-        enable = true
+        enable = true,
     },
     indent = {
         enable = true,
         disable = {},
-    }
-}
+    },
+})

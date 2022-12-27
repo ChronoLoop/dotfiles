@@ -1,16 +1,16 @@
-require 'kevin.set'
-require 'kevin.plugins'
-require 'kevin.keybindings'
-require 'kevin.keymap'
-require 'kevin.telescope'
-require 'kevin.bufferline'
-require 'kevin.lualine'
-require 'kevin.lsp'
-require 'kevin.treesitter'
-require 'kevin.cmp'
-require 'kevin.autopairs'
-require 'kevin.indentline'
-require 'kevin.nvim-tree'
-require 'kevin.nvim-tree-context'
-require 'kevin.gitsigns'
-require 'kevin.nvim-colorizer'
+require('kevin.set')
+require('kevin.plugins')
+require('kevin.keybindings')
+require('kevin.keymap')
+require('kevin.telescope')
+require('kevin.bufferline')
+require('kevin.lualine')
+require('kevin.lsp')
+require('kevin.treesitter')
+require('kevin.cmp')
+require('kevin.autopairs')
+require('kevin.indentline')
+require('kevin.nvim-tree')
+require('kevin.nvim-tree-context')
+require('kevin.gitsigns')
+require('kevin.nvim-colorizer')

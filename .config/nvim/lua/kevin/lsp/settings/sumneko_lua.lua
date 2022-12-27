@@ -3,17 +3,17 @@ return {
         Lua = {
             runtime = {
                 version = 'LuaJIT',
-                path = vim.split(package.path, ";"),
+                path = vim.split(package.path, ';'),
             },
             diagnostics = {
-                globals = { 'vim' }
+                globals = { 'vim' },
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file('', true),
-                checkThirdParty = false
+                checkThirdParty = false,
             },
             telemetry = {
-                enable = false
+                enable = false,
             },
         },
     },

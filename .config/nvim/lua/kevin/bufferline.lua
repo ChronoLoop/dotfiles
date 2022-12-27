@@ -1,5 +1,5 @@
-require('bufferline').setup{
+require('bufferline').setup({
     options = {
-        mode = "tabs"
-    }
-}
+        mode = 'tabs',
+    },
+})

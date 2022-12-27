@@ -1,1 +1,1 @@
-require 'kevin'
+require('kevin')
