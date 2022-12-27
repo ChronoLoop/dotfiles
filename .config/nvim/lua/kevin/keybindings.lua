@@ -4,6 +4,7 @@ local nnoremap = keymap.nnoremap
 
 nnoremap('<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 nnoremap('<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+nnoremap('<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch by [B]uffers' })
 
 nnoremap('<C-S><C-S>', ':set invrelativenumber<CR>')
 nnoremap('<C-s>', ':w<CR>')
