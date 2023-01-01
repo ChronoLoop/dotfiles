@@ -27,6 +27,7 @@ cmp.setup({
     mapping = {
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<Right>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -84,5 +85,9 @@ cmp.setup({
                 return item
             end,
         }),
+    },
+    confirm_opts = {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
     },
 })
