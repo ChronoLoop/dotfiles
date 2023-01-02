@@ -38,7 +38,6 @@ cmp.setup({
             elseif luasnip.expandable() then
                 luasnip.expand()
             elseif check_backspace() then
-                -- cmp.complete()
                 fallback()
             else
                 fallback()
@@ -60,6 +59,7 @@ cmp.setup({
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<Esc>'] = cmp.mapping(function(fallback)
+            cmp.mapping.abort() -- not sure if this fixes bug with tag pair being inserted multiple time after autocompletion and escape
             fallback()
         end),
     },
@@ -76,9 +76,9 @@ cmp.setup({
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             before = function(entry, item)
                 item.menu = ({
+                    buffer = '[Buffer]',
                     nvim_lsp = '[LSP]',
                     luasnip = '[Snippet]',
-                    buffer = '[Buffer]',
                     path = '[Path]',
                 })[entry.source.name]
 
