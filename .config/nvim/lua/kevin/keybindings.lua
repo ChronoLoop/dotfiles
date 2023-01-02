@@ -19,3 +19,6 @@ nnoremap('<C-j>', '<C-w>j')
 nnoremap('<C-h>', '<C-w>h')
 nnoremap('<C-k>', '<C-w>k')
 nnoremap('<C-l>', '<C-w>l')
+
+nnoremap('<C-p>', '"0p') -- paste in
+nnoremap('<C-P>', '"0P') -- paste in
