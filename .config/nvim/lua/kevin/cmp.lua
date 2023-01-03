@@ -59,7 +59,7 @@ cmp.setup({
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<Esc>'] = cmp.mapping(function(fallback)
-            cmp.mapping.abort() -- not sure if this fixes bug with tag pair being inserted multiple time after autocompletion and escape
+            luasnip.unlink_current() -- fix: unfinished snippet causing code to be duplicated (https://github.com/L3MON4D3/LuaSnip/discussions/675, https://github.com/L3MON4D3/LuaSnip/issues/656)
             fallback()
         end),
     },
