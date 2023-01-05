@@ -14,6 +14,7 @@ require('kevin.nvim-tree')
 require('kevin.nvim-tree-context')
 require('kevin.gitsigns')
 require('kevin.nvim-colorizer')
+require('kevin.comment')
 
 -- thmes
 require('kevin.themes.tokyonight')
