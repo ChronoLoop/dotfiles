@@ -90,4 +90,5 @@ cmp.setup({
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
+    preselect = cmp.PreselectMode.None,
 })
