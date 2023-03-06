@@ -22,3 +22,6 @@ nnoremap('<C-l>', '<C-w>l')
 
 nnoremap('<C-p>', '"0p') -- paste in
 nnoremap('<C-P>', '"0P') -- paste in
+
+nnoremap('<leader>gt', ':BufferLineCycleNext<CR>', { desc = 'go to next buffer' })
+nnoremap('<leader>Gt', ':BufferLineCyclePrev<CR>', { desc = 'go to previous buffer' })
