@@ -7,7 +7,7 @@ require('nvim-tree').setup({
     },
     update_focused_file = {
         enable = true,
-        ignore = {
+        ignore_list = {
             '^.git$',
         },
     },
