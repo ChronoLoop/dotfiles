@@ -1,6 +1,11 @@
+local status_ok, gitsigns = pcall(require, 'gitsigns')
+if not status_ok then
+    return
+end
+
 local keymap = require('kevin.keymap')
 
-require('gitsigns').setup({
+gitsigns.setup({
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
         local function nnoremap(l, r, opts)

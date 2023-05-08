@@ -1,5 +1,5 @@
--- Safely call command to set colorscheme
--- but do not stop execution
+-- -- Safely call command to set colorscheme
+-- -- but do not stop execution
 local colorscheme_cmd = 'colorscheme onedark'
 local success, err = pcall(vim.cmd, colorscheme_cmd)
 if not success then

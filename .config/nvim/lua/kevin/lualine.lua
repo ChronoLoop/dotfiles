@@ -1,5 +1,10 @@
+local status_ok, lualine = pcall(require, 'lualine')
+if not status_ok then
+    return
+end
+
 -- favorites: nightfly, tokyonight
-require('lualine').setup({
+lualine.setup({
     options = { theme = 'tokyonight', section_separators = '', component_separators = '' },
     sections = {
         lualine_c = {

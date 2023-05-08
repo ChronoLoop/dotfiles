@@ -62,4 +62,14 @@ packer.startup(function(use)
     use('lukas-reineke/indent-blankline.nvim')
     use('onsails/lspkind.nvim')
     use('NvChad/nvim-colorizer.lua')
+
+    --Go
+    use({
+        'olexsmir/gopher.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+        },
+        run = ':GoInstallDeps',
+    })
 end)

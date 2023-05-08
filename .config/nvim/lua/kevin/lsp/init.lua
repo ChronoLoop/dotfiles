@@ -62,6 +62,7 @@ local function on_attach(client, bufnr)
             lsp_formatting(bufnr)
         end,
     })
+
     local nmap = function(keys, func, opts)
         local default_opts = { buffer = bufnr }
         opts = vim.tbl_extend('force', default_opts, opts or {})
@@ -93,6 +94,10 @@ local function on_attach(client, bufnr)
     nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
     nmap('<leader>ls', string.format('<cmd>lua vim.diagnostic.open_float(%d, %s)<CR>', bufnr, '{ width = 80, focusable = false, border = "single" }'))
+
+    -- Go
+    nmap('<leader>gsj', ':GoTagAdd json<CR>', { desc = 'Add json struct tags' })
+    nmap('<leader>gsy', ':GoTagAdd yaml<CR>', { desc = 'Add yaml struct tags' })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
