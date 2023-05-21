@@ -41,7 +41,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Don't pass messages to |ins-completion-menu|.
-vim.opt.shortmess:append('c')
+vim.opt.shortmess:append({ c = true })
 
 -- ====================================================================================
 -- Theme

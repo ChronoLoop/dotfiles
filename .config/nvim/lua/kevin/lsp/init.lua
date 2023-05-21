@@ -37,6 +37,10 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
+            -- null-ls: avoid LSP formatting conflicts
+            if client.name == 'null-ls' then
+                return true
+            end
             -- disable formatting from tsserver, html, jsonls
             if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' then
                 return false
