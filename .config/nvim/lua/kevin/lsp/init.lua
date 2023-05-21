@@ -37,10 +37,6 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
-            -- null-ls: avoid LSP formatting conflicts
-            if client.name == 'null-ls' then
-                return true
-            end
             -- disable formatting from tsserver, html, jsonls
             if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' then
                 return false
@@ -58,14 +54,16 @@ end
 local function on_attach(client, bufnr)
     print('Attaching to ' .. client.name)
 
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-            lsp_formatting(bufnr)
-        end,
-    })
+    if client.supports_method('textDocument/formatting') then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
+        })
+    end
 
     local nmap = function(keys, func, opts)
         local default_opts = { buffer = bufnr }
@@ -136,7 +134,6 @@ local servers = {
     'pyright',
     'rust_analyzer',
     'lua_ls',
-    'tailwindcss',
     'tsserver',
     'vimls',
     'yamlls',
