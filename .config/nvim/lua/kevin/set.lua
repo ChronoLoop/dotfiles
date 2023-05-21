@@ -1,6 +1,7 @@
 -- ==================================================================================== Initialize
 -- ====================================================================================
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Enable provider for only python3 and node
 vim.g.python3_host_prog = vim.fn.exepath('python3')

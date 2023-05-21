@@ -1,3 +1,6 @@
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+require('kevin.set')
+
 require('kevin.autocommands')
 require('kevin.autopairs')
 require('kevin.bufferline')
@@ -13,7 +16,6 @@ require('kevin.nvim-colorizer')
 require('kevin.nvim-tree')
 require('kevin.nvim-tree-context')
 require('kevin.plugins')
-require('kevin.set')
 require('kevin.telescope')
 require('kevin.treesitter')
 
