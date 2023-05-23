@@ -18,6 +18,7 @@ require('kevin.nvim-tree-context')
 require('kevin.plugins')
 require('kevin.telescope')
 require('kevin.treesitter')
+require('kevin.dap')
 
 -- themes
 require('kevin.themes.tokyonight')

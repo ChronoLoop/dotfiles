@@ -23,6 +23,11 @@ packer.startup(function(use)
     use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
     use('jose-elias-alvarez/null-ls.nvim')
 
+    --debugging
+    use({ 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } })
+    use('leoluz/nvim-dap-go')
+    use('theHamsta/nvim-dap-virtual-text')
+
     -- LSP
     use({
         'neovim/nvim-lspconfig',

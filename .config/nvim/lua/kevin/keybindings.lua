@@ -28,3 +28,8 @@ nnoremap('<C-P>', '"0P') -- paste in
 
 nnoremap('<leader>gt', ':BufferLineCycleNext<CR>', { desc = 'go to next buffer' })
 nnoremap('<leader>Gt', ':BufferLineCyclePrev<CR>', { desc = 'go to previous buffer' })
+
+nnoremap('=', '<cmd>vertical resize +5<cr>') -- make the window biger vertically
+nnoremap('-', '<cmd>vertical resize -5<cr>') -- make the window smaller vertically
+nnoremap('+', '<cmd>horizontal resize +2<cr>') -- make the window bigger horizontally by pressing shift and =
+nnoremap('_', '<cmd>horizontal resize -2<cr>') -- make the window smaller horizontally by pressing shift and -
