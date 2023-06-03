@@ -49,9 +49,9 @@ oil.setup({
     keymaps = {
         ['g?'] = 'actions.show_help',
         ['<CR>'] = 'actions.select',
-        ['<C-s>'] = 'actions.select_vsplit',
-        ['<C-h>'] = 'actions.select_split',
-        ['<C-t>'] = 'actions.select_tab',
+        ['<C-s>'] = false,
+        ['<C-h>'] = false,
+        ['<C-t>'] = false,
         ['<C-p>'] = 'actions.preview',
         ['<C-c>'] = 'actions.close',
         ['<C-l>'] = 'actions.refresh',
@@ -65,7 +65,7 @@ oil.setup({
     use_default_keymaps = true,
     view_options = {
         -- Show files and directories that start with "."
-        show_hidden = false,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
             return vim.startswith(name, '.')
