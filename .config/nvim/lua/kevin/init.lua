@@ -19,6 +19,7 @@ require('kevin.plugins')
 require('kevin.telescope')
 require('kevin.treesitter')
 require('kevin.dap')
+require('kevin.oil')
 
 -- themes
 require('kevin.themes.tokyonight')

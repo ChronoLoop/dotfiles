@@ -1,7 +1,10 @@
 local keymap = require('kevin.keymap')
 local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
-local telescopeBuiltin = require('telescope.builtin')
+local telescopeBuiltinOk, telescopeBuiltin = pcall(require, 'telescope.builtin')
+if not telescopeBuiltinOk then
+    return
+end
 
 nnoremap('<leader>sf', telescopeBuiltin.find_files, { desc = '[S]earch [F]iles' })
 nnoremap('<leader>sg', telescopeBuiltin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -33,3 +36,10 @@ nnoremap('=', '<cmd>vertical resize +5<cr>') -- make the window biger vertically
 nnoremap('-', '<cmd>vertical resize -5<cr>') -- make the window smaller vertically
 nnoremap('+', '<cmd>horizontal resize +2<cr>') -- make the window bigger horizontally by pressing shift and =
 nnoremap('_', '<cmd>horizontal resize -2<cr>') -- make the window smaller horizontally by pressing shift and -
+
+local oil_ok, oil = pcall(require, 'oil')
+if not oil_ok then
+    return
+end
+
+nnoremap('<leader>o', oil.open, { desc = 'Open parent directory' })

@@ -22,6 +22,7 @@ packer.startup(function(use)
     use({ 'lewis6991/gitsigns.nvim' })
     use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
     use('jose-elias-alvarez/null-ls.nvim')
+    use('stevearc/oil.nvim')
 
     --debugging
     use({ 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } })
