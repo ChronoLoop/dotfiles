@@ -19,7 +19,7 @@ inoremap('<C-c>', '<Esc>')
 
 nnoremap('<C-n>', ':NvimTreeToggle<CR>')
 nnoremap('<leader>r', ':NvimTreeFindFile<CR>')
-nnoremap('<leader>g', ':Git<CR>')
+nnoremap('<leader>gi', ':Git<CR>')
 
 nnoremap('<C-j>', '<C-w>j')
 nnoremap('<C-h>', '<C-w>h')
