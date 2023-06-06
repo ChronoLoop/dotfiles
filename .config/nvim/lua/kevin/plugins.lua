@@ -13,7 +13,10 @@ packer.startup(function(use)
         },
     })
     use('tpope/vim-fugitive')
-    use('tpope/vim-surround')
+    use({
+        'kylechui/nvim-surround',
+        tag = '*', -- Use for stability; omit to use `main` branch for the latest features
+    })
     use('numToStr/Comment.nvim')
     use({ 'akinsho/nvim-bufferline.lua', tag = 'v3.*', requires = 'kyazdani42/nvim-web-devicons' })
     use('mattn/emmet-vim')

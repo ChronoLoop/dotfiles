@@ -20,6 +20,7 @@ require('kevin.telescope')
 require('kevin.treesitter')
 require('kevin.dap')
 require('kevin.oil')
+require('kevin.nvim-surround')
 
 -- themes
 require('kevin.themes.tokyonight')
