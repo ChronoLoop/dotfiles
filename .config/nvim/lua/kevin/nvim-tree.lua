@@ -8,12 +8,9 @@ nvim_tree.setup({
         ignore = false,
     },
     filters = {
-        custom = { '^node_modules$' },
+        custom = { '^node_modules$', '^.git$' },
     },
     update_focused_file = {
         enable = true,
-        ignore_list = {
-            '^.git$',
-        },
     },
 })
