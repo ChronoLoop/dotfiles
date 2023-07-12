@@ -134,6 +134,7 @@ local servers = {
     'pyright',
     'rust_analyzer',
     'lua_ls',
+    'svelte',
     'tsserver',
     'vimls',
     'yamlls',
