@@ -98,8 +98,8 @@ local function on_attach(client, bufnr)
     nmap('<leader>ls', string.format('<cmd>lua vim.diagnostic.open_float(%d, %s)<CR>', bufnr, '{ width = 80, focusable = false, border = "single" }'))
 
     -- Go
-    nmap('<leader>gsj', ':GoTagAdd json<CR>', { desc = 'Add json struct tags' })
-    nmap('<leader>gsy', ':GoTagAdd yaml<CR>', { desc = 'Add yaml struct tags' })
+    nmap('<leader>gsj', ':GoTagAdd json -transform camelcase<CR>', { desc = 'Add json struct tags' })
+    nmap('<leader>gsy', ':GoTagAdd yaml -transform camcelcase<CR>', { desc = 'Add yaml struct tags' })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
