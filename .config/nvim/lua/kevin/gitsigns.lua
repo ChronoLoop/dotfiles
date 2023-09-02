@@ -24,7 +24,10 @@ gitsigns.setup({
         nvnoremap('<leader>hs', ':Gitsigns stage_hunk<CR>')
         nvnoremap('<leader>hr', ':Gitsigns reset_hunk<CR>')
         nnoremap('<leader>hu', gs.undo_stage_hunk)
-        nnoremap('<leader>hp', gs.preview_hunk)
+        nnoremap('<leader>hP', gs.preview_hunk)
+
+        nnoremap('<leader>hp', gs.prev_hunk)
+        nnoremap('<leader>hn', gs.next_hunk)
 
         nnoremap('<leader>hS', gs.stage_buffer)
         nnoremap('<leader>hR', gs.reset_buffer)
