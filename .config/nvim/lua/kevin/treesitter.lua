@@ -5,6 +5,7 @@ end
 
 configs.setup({
     ensure_installed = {
+        'astro',
         'c',
         'cpp',
         'css',
@@ -38,4 +39,8 @@ configs.setup({
         enable = true,
         enable_autocmd = false,
     },
+    sync_install = false,
+    auto_install = true,
+    ignore_install = {},
+    modules = {},
 })

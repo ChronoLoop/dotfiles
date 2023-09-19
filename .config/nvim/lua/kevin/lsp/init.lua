@@ -124,6 +124,7 @@ local function config(_config)
 end
 
 local servers = {
+    'astro',
     'bashls',
     'clangd',
     'cssls',
