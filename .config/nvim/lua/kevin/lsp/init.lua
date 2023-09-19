@@ -137,6 +137,7 @@ local servers = {
     'lua_ls',
     'svelte',
     'tsserver',
+    'tailwindcss',
     'vimls',
     'yamlls',
 }
