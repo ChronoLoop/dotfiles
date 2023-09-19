@@ -9,6 +9,11 @@ if not luasnip_status_ok then
     return
 end
 
+local tail_col_cmp_ok, tailwindcss_colorizer_cmp = pcall(require, 'tailwindcss-colorizer-cmp')
+if not tail_col_cmp_ok then
+    return
+end
+
 require('luasnip/loaders/from_vscode').lazy_load()
 
 local check_backspace = function()
@@ -75,6 +80,7 @@ cmp.setup({
             mode = 'symbol_text', -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             before = function(entry, item)
+                item = tailwindcss_colorizer_cmp.formatter(entry, item)
                 item.menu = ({
                     buffer = '[Buffer]',
                     nvim_lsp = '[LSP]',
