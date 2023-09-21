@@ -14,6 +14,11 @@ if not tail_col_cmp_ok then
     return
 end
 
+local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+if not cmp_autopairs_ok then
+    return
+end
+
 require('luasnip/loaders/from_vscode').lazy_load()
 
 local check_backspace = function()
@@ -22,6 +27,8 @@ local check_backspace = function()
 end
 
 -- Setup nvim-cmp
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
 cmp.setup({
     snippet = {
         expand = function(args)
