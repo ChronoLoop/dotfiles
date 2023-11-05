@@ -1,29 +1,24 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 require('kevin.set')
 
-require('kevin.autocommands')
-require('kevin.autopairs')
-require('kevin.bufferline')
-require('kevin.cmp')
-require('kevin.comment')
-require('kevin.gitsigns')
-require('kevin.indentline')
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local lazy = require('lazy')
+lazy.setup('kevin.plugins')
+
 require('kevin.keybindings')
 require('kevin.keymap')
+
+require('kevin.autocommands')
 require('kevin.lsp')
-require('kevin.lualine')
-require('kevin.nvim-colorizer')
-require('kevin.nvim-tree')
-require('kevin.nvim-tree-context')
-require('kevin.plugins')
-require('kevin.telescope')
-require('kevin.treesitter')
-require('kevin.dap')
-require('kevin.oil')
-require('kevin.nvim-surround')
-
--- themes
-require('kevin.themes.tokyonight')
-
--- Go
-require('kevin.gopher')

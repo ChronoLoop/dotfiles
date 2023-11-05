@@ -1,4 +1,7 @@
-local lspconfig = require('lspconfig')
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_ok or not lspconfig then
+    return
+end
 
 -- Global diagnostic config
 vim.diagnostic.config({
@@ -42,9 +45,6 @@ local lsp_formatting = function(bufnr)
                 return false
             end
 
-            if client.name == 'gopls' then
-                vim.opt_local.expandtab = false
-            end
             return true
         end,
         bufnr = bufnr,
