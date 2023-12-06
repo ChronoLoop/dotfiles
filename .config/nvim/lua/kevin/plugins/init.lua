@@ -19,5 +19,4 @@ return {
     --Theme/Syntax
     'ryanoasis/vim-devicons',
     'kyazdani42/nvim-web-devicons',
-    'JoosepAlviste/nvim-ts-context-commentstring',
 }
