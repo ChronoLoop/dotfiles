@@ -4,7 +4,6 @@ return {
     'mattn/emmet-vim',
     'windwp/nvim-ts-autotag',
     { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-    'jose-elias-alvarez/null-ls.nvim',
 
     -- LSP
     {
@@ -13,6 +12,7 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
+            'creativenull/efmls-configs-nvim',
         },
     },
 

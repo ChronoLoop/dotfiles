@@ -41,7 +41,7 @@ local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
             -- disable formatting from tsserver, html, jsonls
-            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' then
+            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' then
                 return false
             end
 
@@ -129,6 +129,7 @@ local servers = {
     'clangd',
     'cssls',
     'dockerls',
+    'efm',
     'gopls',
     'html',
     'jsonls',
@@ -178,5 +179,3 @@ for _, server in pairs(servers) do
         lspconfig[server].setup(default_config)
     end
 end
-
-require('kevin.lsp.null-ls').setup(on_attach)
