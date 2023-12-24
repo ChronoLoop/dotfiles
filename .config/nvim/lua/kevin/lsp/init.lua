@@ -52,7 +52,7 @@ local lsp_formatting = function(bufnr)
 end
 
 local function on_attach(client, bufnr)
-    print('Attaching to ' .. client.name)
+    -- print('Attaching to ' .. client.name)
 
     if client.supports_method('textDocument/formatting') then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
