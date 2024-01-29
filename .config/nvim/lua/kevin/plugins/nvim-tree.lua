@@ -14,7 +14,7 @@ return {
                 ignore = false,
             },
             filters = {
-                custom = { '^node_modules$', '^.git$' },
+                custom = { '^.git$' },
             },
             update_focused_file = {
                 enable = true,
