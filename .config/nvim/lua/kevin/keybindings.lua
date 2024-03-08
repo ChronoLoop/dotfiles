@@ -40,6 +40,7 @@ nnoremap('_', '<cmd>horizontal resize -2<cr>') -- make the window smaller horizo
 --navigate quickfix list
 nnoremap('<leader>qj', '<cmd>cnext<cr>')
 nnoremap('<leader>qk', '<cmd>cprev<cr>')
+nnoremap('<leader>qc', '<cmd>cclose<cr>')
 
 local oil_ok, oil = pcall(require, 'oil')
 if not oil_ok then
