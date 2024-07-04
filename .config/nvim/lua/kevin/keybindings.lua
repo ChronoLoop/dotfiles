@@ -42,6 +42,9 @@ nnoremap('<leader>qj', '<cmd>cnext<cr>')
 nnoremap('<leader>qk', '<cmd>cprev<cr>')
 nnoremap('<leader>qc', '<cmd>cclose<cr>')
 
+--highlight
+nnoremap('<leader>nh', '<cmd>noh<cr>', { desc = 'stop highlight' })
+
 local oil_ok, oil = pcall(require, 'oil')
 if not oil_ok then
     return

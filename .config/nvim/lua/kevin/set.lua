@@ -34,11 +34,11 @@ vim.opt.mouse = 'a'
 vim.opt.list = true
 
 vim.opt.tabstop = 4
-vim.opt.smarttab = true
-vim.opt.expandtab = true
-vim.opt.showtabline = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.showtabline = 2
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append({ c = true })
