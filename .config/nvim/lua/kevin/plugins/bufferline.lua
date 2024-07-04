@@ -1,6 +1,6 @@
 return {
     'akinsho/nvim-bufferline.lua',
-    version = 'v3.*',
+    version = '*',
     dependencies = 'kyazdani42/nvim-web-devicons',
     config = function()
         local status_ok, bufferline = pcall(require, 'bufferline')
