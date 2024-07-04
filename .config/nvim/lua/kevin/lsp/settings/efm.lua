@@ -3,6 +3,7 @@ require('mason-tool-installer').setup({
         'alex',
         'black',
         'clang-format',
+        'codelldb',
         'flake8',
         'prettier',
         'stylua',
