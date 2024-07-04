@@ -2,6 +2,7 @@ require('mason-tool-installer').setup({
     ensure_installed = {
         'alex',
         'black',
+        'clang-format',
         'flake8',
         'prettier',
         'stylua',
