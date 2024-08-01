@@ -18,7 +18,7 @@ require('mason-tool-installer').setup({
 local alex = require('efmls-configs.linters.alex')
 local black = require('efmls-configs.formatters.black')
 local eslint_d = require('efmls-configs.linters.eslint_d')
-local fixjson = require('efmls-configs.formatters.fixjson')
+-- local fixjson = require('efmls-configs.formatters.fixjson')
 local flake8 = require('efmls-configs.linters.flake8')
 local hadolint = require('efmls-configs.linters.hadolint')
 local prettier = require('efmls-configs.formatters.prettier')
@@ -31,8 +31,8 @@ languages = vim.tbl_extend('force', languages, {
     lua = { stylua },
     python = { flake8, black },
     typescript = { eslint_d, prettier },
-    json = { eslint_d, fixjson, prettier },
-    jsonc = { eslint_d, fixjson, prettier },
+    -- json = { eslint_d, fixjson, prettier },
+    -- jsonc = { eslint_d, fixjson, prettier },
     yaml = { prettier },
     sh = { shfmt },
     markdown = { alex, prettier },
@@ -52,8 +52,8 @@ return {
     filetypes = {
         'lua',
         'python',
-        'json',
-        'jsonc',
+        -- 'json',
+        -- 'jsonc',
         'yaml',
         'sh',
         'markdown',

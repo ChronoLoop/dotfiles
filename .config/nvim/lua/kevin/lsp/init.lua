@@ -56,6 +56,8 @@ local function set_client_tab(client)
         vim.opt.tabstop = 2
         vim.opt.softtabstop = 2
         vim.opt.shiftwidth = 2
+    elseif client.name == 'jsonls' then
+        vim.opt.expandtab = false
     end
 end
 
