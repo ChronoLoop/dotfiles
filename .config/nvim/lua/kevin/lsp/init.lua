@@ -41,7 +41,7 @@ local lsp_formatting = function(buf)
     vim.lsp.buf.format({
         filter = function(client)
             -- disable formatting from tsserver, html, jsonls, etc.
-            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' then
+            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' or client.name == 'clangd' then
                 return false
             end
 
