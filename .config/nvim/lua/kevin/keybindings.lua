@@ -1,6 +1,7 @@
 local keymap = require('kevin.keymap')
 local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
+local vnoremap = keymap.vnoremap
 local telescopeBuiltinOk, telescopeBuiltin = pcall(require, 'telescope.builtin')
 if not telescopeBuiltinOk then
     return
@@ -51,3 +52,17 @@ if not oil_ok then
 end
 
 nnoremap('<leader>o', oil.open, { desc = 'Open parent directory' })
+
+--spectre
+nnoremap('<leader>st', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = 'Toggle Spectre',
+})
+nnoremap('<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = 'Search current word',
+})
+vnoremap('<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = 'Search current word',
+})
+nnoremap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = 'Search on current file',
+})
