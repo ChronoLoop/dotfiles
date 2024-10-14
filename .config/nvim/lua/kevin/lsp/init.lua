@@ -40,8 +40,8 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local lsp_formatting = function(buf)
     vim.lsp.buf.format({
         filter = function(client)
-            -- disable formatting from tsserver, html, jsonls, etc.
-            if client.name == 'tsserver' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' or client.name == 'clangd' then
+            -- disable formatting from ts_ls, html, jsonls, etc.
+            if client.name == 'ts_ls' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' or client.name == 'clangd' then
                 return false
             end
 
@@ -175,7 +175,7 @@ local servers = {
     'rust_analyzer',
     'lua_ls',
     'svelte',
-    'tsserver',
+    'ts_ls',
     'tailwindcss',
     'vimls',
     'yamlls',
