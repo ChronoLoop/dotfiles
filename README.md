@@ -4,6 +4,8 @@
 git clone --bare https://github.com/ChronoLoop/dotfiles.git $HOME/dotfiles
 ```
 
+You may need to copy .gitignore to $HOME before the next step:
+
 ```bash
 git checkout --git-dir=$HOME/dotfiles --work-tree=$HOME
 ```
