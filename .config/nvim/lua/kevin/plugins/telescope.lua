@@ -19,6 +19,8 @@ return {
                     i = {
                         ['<C-k>'] = telescope_actions.move_selection_previous,
                         ['<C-j>'] = telescope_actions.move_selection_next,
+                        ['<C-a>'] = telescope_actions.results_scrolling_left,
+                        ['<C-e>'] = telescope_actions.results_scrolling_right,
                     },
                 },
             },
