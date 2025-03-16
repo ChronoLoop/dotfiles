@@ -14,7 +14,7 @@ return {
 
         telescope.setup({
             defaults = {
-                file_ignore_patterns = { '%.git/', 'node_modules/', 'coverage/', '__pycache__/', '%.o' },
+                file_ignore_patterns = { '%.git/', 'node_modules/', 'coverage/', '__pycache__/', '%.o', 'assets/' },
                 mappings = {
                     i = {
                         ['<C-k>'] = telescope_actions.move_selection_previous,
