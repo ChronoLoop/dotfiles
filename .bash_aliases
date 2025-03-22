@@ -15,3 +15,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
+
+export GIT_EDITOR=vim
