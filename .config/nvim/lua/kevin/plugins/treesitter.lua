@@ -12,6 +12,7 @@ return {
             ensure_installed = {
                 'astro',
                 'c',
+                'c_sharp',
                 'cpp',
                 'css',
                 'graphql',

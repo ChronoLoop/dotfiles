@@ -16,21 +16,22 @@ require('mason-tool-installer').setup({
 })
 
 local alex = require('efmls-configs.linters.alex')
-local black = require('efmls-configs.formatters.black')
-local eslint_d = require('efmls-configs.linters.eslint_d')
--- local fixjson = require('efmls-configs.formatters.fixjson')
 local flake8 = require('efmls-configs.linters.flake8')
 local hadolint = require('efmls-configs.linters.hadolint')
-local prettier = require('efmls-configs.formatters.prettier')
+local eslint_d = require('efmls-configs.linters.eslint_d')
+
+-- local fixjson = require('efmls-configs.formatters.fixjson')
+local black = require('efmls-configs.formatters.black')
 local shfmt = require('efmls-configs.formatters.shfmt')
 local stylua = require('efmls-configs.formatters.stylua')
+local prettier = require('efmls-configs.formatters.prettier')
+prettier.formatCommand =
+    '[[ -x ./node_modules/.bin/prettier ]] && ./node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT} ${--range-start:charStart} ${--range-end:charEnd} ${--tab-width:tabSize} ${--use-tabs:!insertSpaces} || prettier --stdin --stdin-filepath ${INPUT} ${--range-start:charStart} ${--range-end:charEnd} ${--tab-width:tabSize} ${--use-tabs:!insertSpaces}'
 
 local languages = require('efmls-configs.defaults').languages()
 languages = vim.tbl_extend('force', languages, {
-    -- Custom languages, or override existing ones
     lua = { stylua },
     python = { flake8, black },
-    typescript = { eslint_d, prettier },
     -- json = { eslint_d, fixjson, prettier },
     -- jsonc = { eslint_d, fixjson, prettier },
     yaml = { prettier },
@@ -43,6 +44,7 @@ languages = vim.tbl_extend('force', languages, {
     html = { prettier },
     javascript = { eslint_d, prettier },
     javascriptreact = { eslint_d, prettier },
+    typescript = { eslint_d, prettier },
     typescriptreact = { eslint_d, prettier },
     svelte = { eslint_d, prettier },
     vue = { eslint_d, prettier },
