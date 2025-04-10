@@ -140,8 +140,11 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- Only load cmp lsp capabilities when avaiabled
--- in case you uninstall nvim-cmp
+-- local success_blink_cmp, blink_cmp = pcall(require, 'blink.cmp')
+-- if success_blink_cmp then
+--     capabilities = blink_cmp.get_lsp_capabilities(capabilities)
+-- end
+
 local success_cmp_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if success_cmp_lsp then
     capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
