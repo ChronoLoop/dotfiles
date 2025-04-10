@@ -10,17 +10,6 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
--- Add border like lspsaga
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    width = 80,
-    border = 'single',
-})
-
--- Add border like lspsaga
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-    border = 'single',
-})
-
 -- Code action popup
 -- but only use it if installed
 local success_lsputils, lsputils_codeAction = pcall(require, 'lsputil.codeAction')
@@ -127,9 +116,18 @@ local function on_attach(client, buf)
 
     nmap('gr', require('telescope.builtin').lsp_references)
 
-    -- Replacement for lspsaga
-    nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    nmap('K', function()
+        vim.lsp.buf.hover({
+            width = 80,
+            border = 'single',
+        })
+    end)
     nmap('<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    nmap('<leader>sh', function()
+        vim.lsp.buf.signature_help({
+            border = 'single',
+        })
+    end)
     nmap('<leader>af', '<cmd>lua vim.lsp.buf.code_action()<CR>')
     nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
