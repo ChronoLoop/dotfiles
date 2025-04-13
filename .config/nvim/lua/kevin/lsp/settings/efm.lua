@@ -1,16 +1,13 @@
 require('mason-tool-installer').setup({
     ensure_installed = {
         'alex',
-        'black',
-        'clang-format',
-        'codelldb',
+        'eslint_d',
+        'hadolint',
         'flake8',
+
+        'black',
         'prettier',
         'stylua',
-        'eslint_d',
-
-        'fixjson',
-        'hadolint',
         'shfmt',
     },
 })
@@ -20,20 +17,15 @@ local flake8 = require('efmls-configs.linters.flake8')
 local hadolint = require('efmls-configs.linters.hadolint')
 local eslint_d = require('efmls-configs.linters.eslint_d')
 
--- local fixjson = require('efmls-configs.formatters.fixjson')
 local black = require('efmls-configs.formatters.black')
 local shfmt = require('efmls-configs.formatters.shfmt')
 local stylua = require('efmls-configs.formatters.stylua')
 local prettier = require('efmls-configs.formatters.prettier')
-prettier.formatCommand =
-    '[[ -x ./node_modules/.bin/prettier ]] && ./node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT} ${--range-start:charStart} ${--range-end:charEnd} ${--tab-width:tabSize} ${--use-tabs:!insertSpaces} || prettier --stdin --stdin-filepath ${INPUT} ${--range-start:charStart} ${--range-end:charEnd} ${--tab-width:tabSize} ${--use-tabs:!insertSpaces}'
 
 local languages = require('efmls-configs.defaults').languages()
 languages = vim.tbl_extend('force', languages, {
     lua = { stylua },
     python = { flake8, black },
-    -- json = { eslint_d, fixjson, prettier },
-    -- jsonc = { eslint_d, fixjson, prettier },
     yaml = { prettier },
     sh = { shfmt },
     markdown = { alex, prettier },
@@ -51,27 +43,7 @@ languages = vim.tbl_extend('force', languages, {
 })
 
 return {
-    filetypes = {
-        'lua',
-        'python',
-        -- 'json',
-        -- 'jsonc',
-        'yaml',
-        'sh',
-        'markdown',
-        'docker',
-        'solidity',
-
-        'css',
-        'scss',
-        'html',
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-        'svelte',
-        'vue',
-    },
+    filetypes = vim.tbl_keys(languages),
     init_options = {
         documentFormatting = true,
     },
