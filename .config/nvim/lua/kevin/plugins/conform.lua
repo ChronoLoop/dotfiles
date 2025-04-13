@@ -16,11 +16,6 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
-                'alex',
-                'eslint_d',
-                'flake8',
-                'hadolint',
-
                 'black',
                 'prettier',
                 'stylua',

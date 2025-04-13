@@ -1,10 +1,10 @@
 return {
     'saghen/blink.cmp',
     dependencies = {
-        { 'Kaiser-Yang/blink-cmp-git' },
-        { 'Kaiser-Yang/blink-cmp-dictionary' },
+        'Kaiser-Yang/blink-cmp-git',
+        'Kaiser-Yang/blink-cmp-dictionary',
         {
-            'L3MON4D3/LuaSnip', -- Snippets plugin
+            'L3MON4D3/LuaSnip',
             dependencies = {
                 'rafamadriz/friendly-snippets',
             },
@@ -26,6 +26,8 @@ return {
             ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
             ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
             ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+            ['<C-p>'] = { 'snippet_backward', 'fallback' },
+            ['<C-n>'] = { 'snippet_forward', 'fallback' },
         },
         appearance = {
             nerd_font_variant = 'mono',
@@ -35,35 +37,20 @@ return {
             list = {
                 selection = {
                     preselect = false,
-                    auto_insert = false,
+                    auto_insert = true,
                 },
             },
             trigger = {
                 show_on_trigger_character = true,
             },
-            documentation = { auto_show = true, window = { border = 'rounded' } },
+            documentation = { auto_show = true, auto_show_delay_ms = 0, window = { border = 'rounded', max_width = 70 } },
             menu = {
                 draw = {
-                    padding = 0,
-                    columns = { { 'kind_icon', gap = 1 }, { gap = 1, 'label' }, { 'kind', gap = 2 } },
-                    components = {
-                        kind_icon = {
-                            text = function(ctx)
-                                return ' ' .. ctx.kind_icon .. ' '
-                            end,
-                            highlight = function(ctx)
-                                return 'BlinkCmpKindIcon' .. ctx.kind
-                            end,
-                        },
-                        kind = {
-                            text = function(ctx)
-                                return ' ' .. ctx.kind .. ' '
-                            end,
-                        },
-                    },
+                    columns = { { 'kind_icon' }, { 'label' }, { 'kind' } },
                 },
             },
         },
+
         sources = {
             default = { 'buffer', 'lsp', 'snippets', 'path' },
             providers = {
