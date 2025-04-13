@@ -114,6 +114,7 @@ return {
                 { name = 'luasnip' },
                 { name = 'buffer' },
                 { name = 'path' },
+                { name = 'render-markdown' },
             },
             formatting = {
                 format = lspkind.cmp_format({

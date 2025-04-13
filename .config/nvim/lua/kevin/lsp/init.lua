@@ -46,14 +46,17 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local lsp_formatting = function(buf)
     vim.lsp.buf.format({
         filter = function(client)
-            return disabled_lsp_formatters[client.name] ~= true
+            return not disabled_lsp_formatters[client.name]
         end,
         bufnr = buf,
     })
 end
 
-local format_buffer = function(buf)
-    lsp_formatting(buf)
+local format_buffer = function(buf, name)
+    if not disabled_lsp_formatters[name] then
+        lsp_formatting(buf)
+    end
+
     lint.try_lint()
     conform.format({ bufnr = buf })
 end
@@ -96,13 +99,13 @@ end
 local function on_attach(client, buf)
     -- print('Attaching to ' .. client.name)
 
-    if client.supports_method('textDocument/formatting') then
+    if client.supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = buf })
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = augroup,
             buffer = buf,
             callback = function()
-                format_buffer(buf)
+                format_buffer(buf, client.name)
             end,
         })
     end
@@ -128,7 +131,7 @@ local function on_attach(client, buf)
     nmap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     nmap('<leader>p', '', {
         callback = function()
-            format_buffer(buf)
+            format_buffer(buf, client.name)
         end,
     })
 
