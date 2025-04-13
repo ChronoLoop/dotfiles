@@ -3,16 +3,13 @@ return {
     dependencies = {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
+    event = {
+        'BufReadPre',
+        'BufNewFile',
+    },
     config = function()
-        local conform_ok, conform = pcall(require, 'conform')
-        if not conform_ok then
-            return
-        end
-
-        local mason_tool_installer_ok, mason_tool_installer = pcall(require, 'mason-tool-installer')
-        if not mason_tool_installer_ok then
-            return
-        end
+        local conform = require('conform')
+        local mason_tool_installer = require('mason-tool-installer')
 
         mason_tool_installer.setup({
             ensure_installed = {
@@ -44,6 +41,9 @@ return {
                 typescriptreact = { 'prettier' },
                 svelte = { 'prettier' },
                 vue = { 'prettier' },
+            },
+            format_on_save = {
+                async = false,
             },
         })
     end,

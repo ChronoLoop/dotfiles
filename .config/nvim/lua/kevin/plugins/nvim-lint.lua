@@ -3,28 +3,38 @@ return {
     dependencies = {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
+    event = {
+        'BufReadPre',
+        'BufNewFile',
+    },
     config = function()
-        local lint_ok, lint = pcall(require, 'lint')
-        if not lint_ok then
-            return
-        end
-
-        local mason_tool_installer_ok, mason_tool_installer = pcall(require, 'mason-tool-installer')
-        if not mason_tool_installer_ok then
-            return
-        end
+        local lint = require('lint')
+        local mason_tool_installer = require('mason-tool-installer')
 
         mason_tool_installer.setup({
             ensure_installed = {
                 'alex',
                 { 'eslint_d', version = '13.1.2' },
-                'flake8',
+                'pylint',
                 'hadolint',
             },
         })
+
+        lint.linters.eslint_d.args = {
+            '--no-color',
+            '--format',
+            'visualstudio',
+            '--no-warn-ignored',
+            '--stdin-filename',
+            function()
+                return vim.api.nvim_buf_get_name(0)
+            end,
+            '--stdin',
+        }
+
         lint.linters_by_ft = {
             markdown = { 'alex' },
-            python = { 'flake8' },
+            python = { 'pylint' },
             docker = { 'hadolint' },
             javascript = { 'eslint_d' },
             javascriptreact = { 'eslint_d' },
@@ -33,5 +43,20 @@ return {
             svelte = { 'eslint_d' },
             vue = { 'eslint_d' },
         }
+
+        local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
+
+        vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+            group = lint_augroup,
+            callback = function()
+                lint.try_lint()
+            end,
+        })
+
+        local keymap = require('kevin.keymap')
+        local nnoremap = keymap.nnoremap
+        nnoremap('<leader>l', function()
+            lint.try_lint()
+        end, { desc = 'Trigger linting for current file' })
     end,
 }

@@ -8,11 +8,6 @@ if not conform_ok or not conform then
     return
 end
 
-local lint_ok, lint = pcall(require, 'lint')
-if not lint_ok or not lint then
-    return
-end
-
 -- Global diagnostic config
 vim.diagnostic.config({
     underline = { severity_limit = 'Error' },
@@ -41,7 +36,7 @@ local disabled_lsp_formatters = {
 }
 
 -- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local lsp_formatting = function(buf)
     vim.lsp.buf.format({
@@ -57,7 +52,6 @@ local format_buffer = function(buf, name)
         lsp_formatting(buf)
     end
 
-    lint.try_lint()
     conform.format({ bufnr = buf })
 end
 
@@ -100,9 +94,9 @@ local function on_attach(client, buf)
     -- print('Attaching to ' .. client.name)
 
     if client.supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = buf })
+        vim.api.nvim_clear_autocmds({ group = formatting_augroup, buffer = buf })
         vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
+            group = formatting_augroup,
             buffer = buf,
             callback = function()
                 format_buffer(buf, client.name)
