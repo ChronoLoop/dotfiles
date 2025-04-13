@@ -3,6 +3,16 @@ if not lspconfig_ok or not lspconfig then
     return
 end
 
+local conform_ok, conform = pcall(require, 'conform')
+if not conform_ok or not conform then
+    return
+end
+
+local lint_ok, lint = pcall(require, 'lint')
+if not lint_ok or not lint then
+    return
+end
+
 -- Global diagnostic config
 vim.diagnostic.config({
     underline = { severity_limit = 'Error' },
@@ -11,7 +21,6 @@ vim.diagnostic.config({
 })
 
 -- Code action popup
--- but only use it if installed
 local success_lsputils, lsputils_codeAction = pcall(require, 'lsputil.codeAction')
 if success_lsputils then
     if vim.fn.has('nvim-0.6') == 1 then
@@ -23,21 +32,30 @@ if success_lsputils then
     end
 end
 
+local disabled_lsp_formatters = {
+    ts_ls = true,
+    jsonls = true,
+    html = true,
+    lua_ls = true,
+    clangd = true,
+}
+
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local lsp_formatting = function(buf)
     vim.lsp.buf.format({
         filter = function(client)
-            -- disable formatting from ts_ls, html, jsonls, etc.
-            if client.name == 'ts_ls' or client.name == 'jsonls' or client.name == 'html' or client.name == 'lua_ls' or client.name == 'clangd' then
-                return false
-            end
-
-            return true
+            return disabled_lsp_formatters[client.name] ~= true
         end,
         bufnr = buf,
     })
+end
+
+local format_buffer = function(buf)
+    lsp_formatting(buf)
+    lint.try_lint()
+    conform.format({ bufnr = buf })
 end
 
 local function set_client_tab(client)
@@ -84,7 +102,7 @@ local function on_attach(client, buf)
             group = augroup,
             buffer = buf,
             callback = function()
-                lsp_formatting(buf)
+                format_buffer(buf)
             end,
         })
     end
@@ -110,7 +128,7 @@ local function on_attach(client, buf)
     nmap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     nmap('<leader>p', '', {
         callback = function()
-            lsp_formatting(buf)
+            format_buffer(buf)
         end,
     })
 
@@ -168,7 +186,6 @@ local servers = {
     'clangd',
     'cssls',
     'dockerls',
-    'efm',
     'gopls',
     'html',
     'jsonls',

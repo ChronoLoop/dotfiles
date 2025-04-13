@@ -30,6 +30,10 @@ return {
                         location = require('ts_context_commentstring.utils').get_visual_start_location()
                     end
 
+                    if location == nil then
+                        return require('ts_context_commentstring.internal').calculate_commentstring()
+                    end
+
                     return require('ts_context_commentstring.internal').calculate_commentstring({
                         key = type,
                         location = location,
