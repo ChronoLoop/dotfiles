@@ -2,7 +2,6 @@ return {
     -- Core
     'tpope/vim-fugitive',
     'mattn/emmet-vim',
-    'windwp/nvim-ts-autotag',
     { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 
     -- LSP

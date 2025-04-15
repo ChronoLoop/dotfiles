@@ -52,7 +52,7 @@ return {
         },
 
         sources = {
-            default = { 'buffer', 'lsp', 'snippets', 'path' },
+            default = { 'buffer', 'lsp', 'snippets', 'path', 'omni' },
             providers = {
                 git = {
                     module = 'blink-cmp-git',
@@ -74,6 +74,7 @@ return {
         snippets = {
             preset = 'luasnip',
         },
+        signature = { enabled = true },
     },
     opts_extend = { 'sources.default' },
 }
