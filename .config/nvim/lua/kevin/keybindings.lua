@@ -7,6 +7,9 @@ if not telescopeBuiltinOk then
     return
 end
 
+nnoremap('<C-d>', '<C-d>zz')
+nnoremap('<C-u>', '<C-u>zz')
+
 nnoremap('<leader>sf', telescopeBuiltin.find_files, { desc = '[S]earch [F]iles' })
 nnoremap('<leader>sg', telescopeBuiltin.live_grep, { desc = '[S]earch by [G]rep' })
 nnoremap('<leader>sb', telescopeBuiltin.buffers, { desc = '[S]earch by [B]uffers' })

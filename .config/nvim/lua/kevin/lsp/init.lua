@@ -114,11 +114,14 @@ local function on_attach(client, buf)
         vim.keymap.set('n', keys, func, opts)
     end
 
+    local telescope_builtin = require('telescope.builtin')
+
     nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
     nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
     nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    nmap('gw', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-    nmap('gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+    nmap('gr', telescope_builtin.lsp_references)
+    nmap('gw', telescope_builtin.lsp_document_symbols)
+    nmap('gW', telescope_builtin.lsp_workspace_symbols)
     nmap('gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
     nmap('<leader>le', '<cmd>lua vim.diagnostic.setloclist()<CR>')
     nmap('[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
@@ -128,8 +131,6 @@ local function on_attach(client, buf)
             format_buffer(buf, client.name)
         end,
     })
-
-    nmap('gr', require('telescope.builtin').lsp_references)
 
     nmap('K', function()
         vim.lsp.buf.hover({
