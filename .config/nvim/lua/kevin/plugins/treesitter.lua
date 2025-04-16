@@ -3,10 +3,7 @@ return {
     build = ':TSUpdate',
 
     config = function()
-        local status_ok, configs = pcall(require, 'nvim-treesitter.configs')
-        if not status_ok then
-            return
-        end
+        local configs = require('nvim-treesitter.configs')
 
         configs.setup({
             ensure_installed = {
@@ -30,12 +27,6 @@ return {
                 'go',
             },
             highlight = { enable = true },
-            autopairs = {
-                enable = true,
-            },
-            autotag = {
-                enable = true,
-            },
             indent = {
                 enable = true,
                 disable = {},
