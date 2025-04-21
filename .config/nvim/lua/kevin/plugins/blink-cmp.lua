@@ -1,8 +1,6 @@
 return {
     'saghen/blink.cmp',
     dependencies = {
-        'Kaiser-Yang/blink-cmp-git',
-        'Kaiser-Yang/blink-cmp-dictionary',
         {
             'L3MON4D3/LuaSnip',
             dependencies = {
@@ -53,22 +51,6 @@ return {
 
         sources = {
             default = { 'buffer', 'lsp', 'snippets', 'path', 'omni' },
-            providers = {
-                git = {
-                    module = 'blink-cmp-git',
-                    name = 'Git',
-                    enabled = function()
-                        return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype)
-                    end,
-                    opts = {},
-                },
-                dictionary = {
-                    module = 'blink-cmp-dictionary',
-                    name = 'Dict',
-                    min_keyword_length = 3,
-                    opts = {},
-                },
-            },
         },
         fuzzy = { implementation = 'prefer_rust' },
         snippets = {

@@ -93,7 +93,7 @@ end
 local function on_attach(client, buf)
     -- print('Attaching to ' .. client.name)
 
-    if client.supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+    if client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
         vim.api.nvim_clear_autocmds({ group = formatting_augroup, buffer = buf })
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = formatting_augroup,
