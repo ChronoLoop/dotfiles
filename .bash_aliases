@@ -17,3 +17,7 @@ LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
 
 export GIT_EDITOR=vim
+
+#Dotnet paths
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
