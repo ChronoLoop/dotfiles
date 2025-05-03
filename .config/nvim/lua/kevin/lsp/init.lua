@@ -190,6 +190,7 @@ local servers = {
     'tailwindcss',
     'vimls',
     'yamlls',
+    'csharp_ls',
 }
 
 local status_ok, mason = pcall(require, 'mason')
