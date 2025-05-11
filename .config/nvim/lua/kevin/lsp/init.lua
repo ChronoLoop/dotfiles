@@ -1,8 +1,3 @@
-local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
-if not lspconfig_ok or not lspconfig then
-    return
-end
-
 local conform_ok, conform = pcall(require, 'conform')
 if not conform_ok or not conform then
     return
@@ -14,18 +9,6 @@ vim.diagnostic.config({
     signs = true,
     update_in_insert = false,
 })
-
--- Code action popup
-local success_lsputils, lsputils_codeAction = pcall(require, 'lsputil.codeAction')
-if success_lsputils then
-    if vim.fn.has('nvim-0.6') == 1 then
-        vim.lsp.handlers['textDocument/codeAction'] = lsputils_codeAction.code_action_handler
-    else
-        vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
-            lsputils_codeAction.code_action_handler(nil, actions, nil, nil, nil)
-        end
-    end
-end
 
 local disabled_lsp_formatters = {
     ts_ls = true,
@@ -228,9 +211,10 @@ mason_lspconfig.setup({
 
 for _, server in pairs(servers) do
     local has_custom_config, server_custom_config = pcall(require, 'kevin.lsp.settings.' .. server)
+    vim.lsp.enable(server)
     if has_custom_config then
-        lspconfig[server].setup(config(server_custom_config))
+        vim.lsp.config(server, config(server_custom_config))
     else
-        lspconfig[server].setup(default_config)
+        vim.lsp.config(server, default_config)
     end
 end
