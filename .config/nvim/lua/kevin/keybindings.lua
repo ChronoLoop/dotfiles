@@ -69,8 +69,3 @@ vnoremap('<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
 nnoremap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
     desc = 'Search on current file',
 })
-
---noice
-nnoremap('<leader>nd', '<cmd>NoiceDismiss<CR>', {
-    desc = 'Dismiss Noice Message',
-})

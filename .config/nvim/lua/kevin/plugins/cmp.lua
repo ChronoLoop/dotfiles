@@ -6,7 +6,6 @@ return {
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-cmdline',
         'saadparwaiz1/cmp_luasnip',
         'roobert/tailwindcss-colorizer-cmp.nvim',
         'onsails/lspkind.nvim',
@@ -62,29 +61,6 @@ return {
             end
             cmp_autopairs.on_confirm_done()(args)
         end)
-
-        -- `/` cmdline setup.
-        cmp.setup.cmdline('/', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = 'buffer' },
-            },
-        })
-
-        -- `:` cmdline setup.
-        cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = 'path' },
-            }, {
-                {
-                    name = 'cmdline',
-                    option = {
-                        ignore_cmds = { 'Man', '!' },
-                    },
-                },
-            }),
-        })
 
         cmp.setup({
             snippet = {

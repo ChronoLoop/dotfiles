@@ -25,6 +25,5 @@ return {
                 },
             },
         })
-        telescope.load_extension('noice')
     end,
 }
