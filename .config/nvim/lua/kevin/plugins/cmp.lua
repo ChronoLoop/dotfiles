@@ -4,9 +4,10 @@ return {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
-        'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-nvim-lsp-signature-help',
+        'hrsh7th/cmp-cmdline',
+        'saadparwaiz1/cmp_luasnip',
         'roobert/tailwindcss-colorizer-cmp.nvim',
         'onsails/lspkind.nvim',
         {
@@ -62,6 +63,29 @@ return {
             cmp_autopairs.on_confirm_done()(args)
         end)
 
+        -- `/` cmdline setup.
+        cmp.setup.cmdline('/', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' },
+            },
+        })
+
+        -- `:` cmdline setup.
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' },
+            }, {
+                {
+                    name = 'cmdline',
+                    option = {
+                        ignore_cmds = { 'Man', '!' },
+                    },
+                },
+            }),
+        })
+
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -103,7 +127,9 @@ return {
                 ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
                 ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
                 ['<Esc>'] = cmp.mapping(function(fallback)
-                    luasnip.unlink_current() -- fix: unfinished snippet causing code to be duplicated (https://github.com/L3MON4D3/LuaSnip/discussions/675, https://github.com/L3MON4D3/LuaSnip/issues/656)
+                    if luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] and not luasnip.session.jump_active then
+                        luasnip.unlink_current() -- fix: unfinished snippet causing code to be duplicated (https://github.com/L3MON4D3/LuaSnip/discussions/675, https://github.com/L3MON4D3/LuaSnip/issues/656)
+                    end
                     fallback()
                 end),
             },
