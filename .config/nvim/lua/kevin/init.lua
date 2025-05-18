@@ -22,3 +22,4 @@ require('kevin.keymap')
 
 require('kevin.autocommands')
 require('kevin.lsp')
+require('kevin.custom.toggle-checkbox')
