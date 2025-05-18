@@ -96,6 +96,12 @@ local function on_attach(client, buf)
 
         vim.keymap.set('n', keys, func, opts)
     end
+    local imap = function(keys, func, opts)
+        local default_opts = { buffer = buf }
+        opts = vim.tbl_extend('force', default_opts, opts or {})
+
+        vim.keymap.set('i', keys, func, opts)
+    end
 
     local telescope_builtin = require('telescope.builtin')
 
@@ -121,7 +127,12 @@ local function on_attach(client, buf)
             border = 'single',
         })
     end)
-    nmap('<leader>sh', function()
+    nmap('<C-s>', function()
+        vim.lsp.buf.signature_help({
+            border = 'single',
+        })
+    end)
+    imap('<C-s>', function()
         vim.lsp.buf.signature_help({
             border = 'single',
         })

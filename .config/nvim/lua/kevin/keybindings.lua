@@ -16,7 +16,7 @@ nnoremap('<leader>sb', telescopeBuiltin.buffers, { desc = '[S]earch by [B]uffers
 nnoremap('<leader>ts', telescopeBuiltin.builtin, { desc = '[T]elescope [S]cope' })
 nnoremap('<leader>tsr', telescopeBuiltin.resume, { desc = '[T]elescope [S]cope [R]esume' })
 
-nnoremap('<C-S><C-S>', ':set invrelativenumber<CR>')
+nnoremap('<C-i><C-i>', ':set invrelativenumber<CR>')
 -- nnoremap('<C-s>', ':w<CR>')
 -- inoremap('<C-s>', '<Esc>:w<CR>a')
 inoremap('<C-c>', '<Esc>')
