@@ -121,7 +121,6 @@ local function on_attach(client, buf)
             border = 'single',
         })
     end)
-    nmap('<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
     nmap('<leader>sh', function()
         vim.lsp.buf.signature_help({
             border = 'single',
