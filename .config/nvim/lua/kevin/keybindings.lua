@@ -14,7 +14,7 @@ nnoremap('<leader>sf', telescopeBuiltin.find_files, { desc = '[S]earch [F]iles' 
 nnoremap('<leader>sg', telescopeBuiltin.live_grep, { desc = '[S]earch by [G]rep' })
 nnoremap('<leader>sb', telescopeBuiltin.buffers, { desc = '[S]earch by [B]uffers' })
 nnoremap('<leader>ts', telescopeBuiltin.builtin, { desc = '[T]elescope [S]cope' })
-nnoremap('<leader>tsr', telescopeBuiltin.resume, { desc = '[T]elescope [S]cope [R]esume' })
+nnoremap('<leader>tr', telescopeBuiltin.resume, { desc = '[T]elescope [S]cope [R]esume' })
 
 nnoremap('<leader>`', ':set invrelativenumber<CR>')
 inoremap('<C-c>', '<Esc>')
