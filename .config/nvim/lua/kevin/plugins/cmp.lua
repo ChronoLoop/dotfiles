@@ -68,7 +68,6 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-
             mapping = {
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -140,6 +139,14 @@ return {
                 select = false,
             },
             preselect = cmp.PreselectMode.None,
+        })
+
+        -- Setup up vim-dadbod
+        cmp.setup.filetype({ 'sql' }, {
+            sources = {
+                { name = 'vim-dadbod-completion' },
+                { name = 'buffer' },
+            },
         })
     end,
 }
