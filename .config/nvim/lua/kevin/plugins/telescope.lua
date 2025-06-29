@@ -21,6 +21,8 @@ return {
                         ['<C-j>'] = telescope_actions.move_selection_next,
                         ['<C-a>'] = telescope_actions.results_scrolling_left,
                         ['<C-e>'] = telescope_actions.results_scrolling_right,
+                        ['<C-h>'] = telescope_actions.preview_scrolling_left,
+                        ['<C-l>'] = telescope_actions.preview_scrolling_right,
                     },
                 },
             },
