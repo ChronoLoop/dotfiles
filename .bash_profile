@@ -47,3 +47,6 @@ function y() {
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 fi
+
+#Latex
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
