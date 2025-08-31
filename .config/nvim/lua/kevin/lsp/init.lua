@@ -189,6 +189,7 @@ local servers = {
     'vimls',
     'yamlls',
     'csharp_ls',
+    'eslint',
 }
 
 local status_ok, mason = pcall(require, 'mason')
