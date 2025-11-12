@@ -15,11 +15,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require('lazy')
-lazy.setup('kevin.plugins')
+lazy.setup({ { import = 'kevin.plugins' }, { import = 'kevin.plugins.lsp' } })
 
 require('kevin.keybindings')
 require('kevin.keymap')
 
 require('kevin.autocommands')
 require('kevin.lsp')
-require('kevin.custom.toggle-checkbox')
+require('kevin.custom')

@@ -1,3 +1,4 @@
+local ts_ls_utils = require('kevin.lsp.utils.ts_ls')
 local keymap = require('kevin.keymap')
 local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
@@ -68,4 +69,9 @@ vnoremap('<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
 })
 nnoremap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
     desc = 'Search on current file',
+})
+
+--Typescript
+nnoremap('<leader>1', ts_ls_utils.organize_imports, {
+    desc = 'TypeScript Organize Imports',
 })

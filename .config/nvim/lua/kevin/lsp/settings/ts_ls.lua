@@ -1,20 +1,9 @@
-local function organize_imports()
-    local params = {
-        title = 'organize_imports',
-        command = '_typescript.organizeImports',
-        arguments = {
-            vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()),
-        },
-    }
-
-    local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
-    client:exec_cmd(params, { bufnr = vim.api.nvim_get_current_buf() })
-end
+local ts_ls_utils = require('kevin.lsp.utils.ts_ls')
 
 return {
     commands = {
         OrganizeImports = {
-            organize_imports,
+            ts_ls_utils.organize_imports,
             description = 'Organize Imports',
         },
     },
