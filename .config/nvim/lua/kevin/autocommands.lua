@@ -19,3 +19,7 @@ local function autocmd_callback(data)
 end
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = autocmd_callback })
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained' }, {
+    command = 'checktime',
+})
