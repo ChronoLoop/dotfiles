@@ -40,3 +40,13 @@ vim.lsp.handlers['window/showMessage'] = function(err, result, context, config)
 
     return original_show_message(err, result, context, config)
 end
+
+-- Refresh nvim-tree after fugitive commands are completed
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'FugitiveChanged',
+    callback = function()
+        vim.schedule(function()
+            require('nvim-tree.api').tree.reload()
+        end)
+    end,
+})
