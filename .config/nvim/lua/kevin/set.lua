@@ -30,7 +30,6 @@ vim.opt.cursorline = true
 -- disable adding new line to end of file on save
 vim.opt.fixeol = false
 
--- https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.mouse = 'a'
 

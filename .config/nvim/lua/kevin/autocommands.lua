@@ -23,3 +23,20 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = autocmd_callback })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained' }, {
     command = 'checktime',
 })
+
+-- https://github.com/razzmatazz/csharp-language-server/issues/119
+local original_show_message = vim.lsp.handlers['window/showMessage']
+
+vim.lsp.handlers['window/showMessage'] = function(err, result, context, config)
+    local client = vim.lsp.get_client_by_id(context.client_id)
+
+    local message_type = context and context.message_type
+    if client and client.name == 'csharp_ls' then
+        if message_type ~= 1 then
+            -- Suppress non-error messages
+            return
+        end
+    end
+
+    return original_show_message(err, result, context, config)
+end
