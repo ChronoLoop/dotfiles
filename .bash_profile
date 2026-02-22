@@ -48,5 +48,18 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 fi
 
-#Latex
+# Latex
 export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+
+# Android
+if [ -d "$HOME/android" ]; then
+    export ANDROID_SDK_ROOT=$HOME/android/
+
+    if [ -d "$ANDROID_SDK_ROOT/platform-tools" ]; then
+        export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+    fi
+
+    if [ -d "$ANDROID_SDK_ROOT/cmdline-tools/bin" ]; then
+        export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin
+    fi
+fi
