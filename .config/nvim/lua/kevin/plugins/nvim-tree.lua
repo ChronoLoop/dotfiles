@@ -19,6 +19,11 @@ return {
             update_focused_file = {
                 enable = true,
             },
+            filesystem_watchers = {
+                ignore_dirs = {
+                    'dist',
+                },
+            },
         })
     end,
 }
