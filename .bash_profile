@@ -63,3 +63,7 @@ if [ -d "$HOME/android" ]; then
         export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin
     fi
 fi
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

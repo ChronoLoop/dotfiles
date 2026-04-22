@@ -17,8 +17,22 @@ return {
                 'prettier',
                 'stylua',
                 'shfmt',
+                'biome',
             },
         })
+
+        local function get_js_formatters(bufnr)
+            local has_biome = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
+                upward = true,
+                path = vim.api.nvim_buf_get_name(bufnr),
+            })[1]
+
+            if has_biome then
+                return { 'prettier', 'biome', 'biome-organize-imports' }
+            end
+
+            return { 'prettier' }
+        end
 
         conform.setup({
             formatters_by_ft = {
@@ -35,10 +49,10 @@ return {
                 python = { 'black' },
                 rust = { 'rustfmt' },
 
-                javascript = { 'prettier' },
-                javascriptreact = { 'prettier' },
-                typescript = { 'prettier' },
-                typescriptreact = { 'prettier' },
+                javascript = get_js_formatters,
+                javascriptreact = get_js_formatters,
+                typescript = get_js_formatters,
+                typescriptreact = get_js_formatters,
                 svelte = { 'prettier' },
                 vue = { 'prettier' },
             },
