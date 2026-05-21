@@ -15,7 +15,7 @@ return {
             ensure_installed = {
                 'alex',
                 { 'eslint_d', version = '13.1.2' },
-                'pylint',
+                'ruff',
                 'hadolint',
             },
         })
@@ -34,7 +34,7 @@ return {
 
         lint.linters_by_ft = {
             markdown = { 'alex' },
-            python = { 'pylint' },
+            python = { 'ruff' },
             docker = { 'hadolint' },
             javascript = { 'eslint_d' },
             javascriptreact = { 'eslint_d' },

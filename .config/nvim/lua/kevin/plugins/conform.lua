@@ -13,7 +13,7 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
-                'black',
+                'ruff',
                 'prettier',
                 'stylua',
                 'shfmt',
@@ -46,7 +46,7 @@ return {
                 yaml = { 'prettier' },
 
                 lua = { 'stylua' },
-                python = { 'black' },
+                python = { 'ruff' },
                 rust = { 'rustfmt' },
 
                 javascript = get_js_formatters,

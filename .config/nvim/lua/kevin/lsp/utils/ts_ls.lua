@@ -12,7 +12,7 @@ function M.organize_imports()
         },
     }
 
-    local clients = vim.lsp.get_clients({ name = 'ts_ls', bufnr = vim.api.nvim_get_current_buf() })
+    local clients = vim.lsp.get_clients({ name = 'tsgo', bufnr = vim.api.nvim_get_current_buf() })
     if #clients == 0 then
         return
     end
