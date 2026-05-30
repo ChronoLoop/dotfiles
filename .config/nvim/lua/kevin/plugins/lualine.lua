@@ -1,6 +1,9 @@
 return {
     'hoob3rt/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true },
+    dependencies = {
+        { 'kyazdani42/nvim-web-devicons', lazy = true },
+        { 'AndreM222/copilot-lualine', lazy = true },
+    },
     config = function()
         local status_ok, lualine = pcall(require, 'lualine')
         if not status_ok then
@@ -17,6 +20,7 @@ return {
                         path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
                     },
                 },
+                lualine_x = { 'copilot', 'encoding', 'fileformat', 'filetype' },
             },
         })
     end,

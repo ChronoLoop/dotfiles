@@ -22,6 +22,7 @@ return {
             filesystem_watchers = {
                 ignore_dirs = {
                     'dist',
+                    'node_modules',
                 },
             },
         })
