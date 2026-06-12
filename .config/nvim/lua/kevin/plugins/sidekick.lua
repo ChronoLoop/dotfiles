@@ -61,7 +61,7 @@ return {
             desc = 'Send This',
         },
         {
-            '<leader>af',
+            '<leader>asf',
             function()
                 require('sidekick.cli').send({ msg = '{file}' })
             end,
@@ -83,7 +83,6 @@ return {
             mode = { 'n', 'x' },
             desc = 'Sidekick Select Prompt',
         },
-        -- Example of a keybinding to open Claude directly
         {
             '<leader>ac',
             function()
