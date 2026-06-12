@@ -19,12 +19,12 @@ return {
                 require('luasnip.loaders.from_vscode').lazy_load()
             end,
         },
-        {
-            'zbirenbaum/copilot-cmp',
-            config = function()
-                require('copilot_cmp').setup()
-            end,
-        },
+        -- {
+        --     'zbirenbaum/copilot-cmp',
+        --     config = function()
+        --         require('copilot_cmp').setup()
+        --     end,
+        -- },
     },
 
     config = function()
@@ -68,13 +68,13 @@ return {
             cmp_autopairs.on_confirm_done()(args)
         end)
 
-        cmp.event:on('menu_opened', function()
-            vim.b.copilot_suggestion_hidden = true
-        end)
+        -- cmp.event:on('menu_opened', function()
+        --     vim.b.copilot_suggestion_hidden = true
+        -- end)
 
-        cmp.event:on('menu_closed', function()
-            vim.b.copilot_suggestion_hidden = false
-        end)
+        -- cmp.event:on('menu_closed', function()
+        --     vim.b.copilot_suggestion_hidden = false
+        -- end)
 
         cmp.setup({
             snippet = {
@@ -130,7 +130,7 @@ return {
                 { name = 'buffer' },
                 { name = 'path' },
                 { name = 'render-markdown' },
-                { name = 'copilot' },
+                -- { name = 'copilot' },
             },
             formatting = {
                 format = lspkind.cmp_format({
@@ -143,7 +143,7 @@ return {
                             nvim_lsp = '[LSP]',
                             luasnip = '[Snippet]',
                             path = '[Path]',
-                            copilot = '[Copilot]',
+                            -- copilot = '[Copilot]',
                         })[entry.source.name]
 
                         return item
@@ -155,11 +155,6 @@ return {
                 select = false,
             },
             preselect = cmp.PreselectMode.None,
-            experimental = {
-                ghost_text = {
-                    hl_group = 'CopilotSuggestion',
-                },
-            },
         })
 
         -- Setup up vim-dadbod

@@ -25,6 +25,7 @@ return {
                 'scss',
                 'svelte',
                 'go',
+                'regex',
             },
             highlight = { enable = true },
             indent = {

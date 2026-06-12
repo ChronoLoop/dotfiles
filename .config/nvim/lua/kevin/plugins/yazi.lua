@@ -3,6 +3,7 @@ return {
     event = 'VeryLazy',
     dependencies = {
         'folke/snacks.nvim',
+        lazy = false,
     },
     keys = {
         {
