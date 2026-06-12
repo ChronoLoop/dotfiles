@@ -7,7 +7,7 @@ return {
             completions = { lsp = { enabled = true } },
             render_modes = { 'n' },
             anti_conceal = { enabled = true, above = 1, below = 1 },
-            latex = { enabeld = false },
+            latex = { enabled = false },
         })
     end,
 }
