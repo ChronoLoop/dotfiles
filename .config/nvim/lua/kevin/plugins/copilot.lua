@@ -8,7 +8,13 @@ return {
     build = ':Copilot auth',
     event = 'InsertEnter',
     config = function()
+        local auth_provider_url = vim.env.NEOVIM_COPILOT_AUTH_URL
+
+        if auth_provider_url == '' then
+            auth_provider_url = nil
+        end
         require('copilot').setup({
+            auth_provider_url = auth_provider_url,
             suggestion = {
                 enabled = false,
             },
