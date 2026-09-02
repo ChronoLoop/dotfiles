@@ -12,7 +12,7 @@ return {
     'rust_analyzer',
     'lua_ls',
     'svelte',
-    'tsgo',
+    'tsc',
     'tailwindcss',
     'vimls',
     'yamlls',
