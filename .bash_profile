@@ -69,5 +69,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # >>> railway initialize >>>
-source "$HOME/.railway/env"
+if [ -f "$HOME/.railway/env" ]; then
+    source "$HOME/.railway/env"
+fi
 # <<< railway initialize <<<
