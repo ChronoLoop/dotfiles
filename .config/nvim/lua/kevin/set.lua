@@ -26,6 +26,7 @@ vim.opt.backup = false
 vim.opt.updatetime = 300
 vim.opt.wrap = false
 vim.opt.cursorline = true
+vim.opt.autoread = true
 
 -- disable adding new line to end of file on save
 vim.opt.fixeol = false
