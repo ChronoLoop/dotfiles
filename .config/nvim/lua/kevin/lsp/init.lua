@@ -119,8 +119,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         nmap('gW', telescope_builtin.lsp_workspace_symbols)
         nmap('gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
         nmap('<leader>le', '<cmd>lua vim.diagnostic.setloclist()<CR>')
-        nmap('[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-        nmap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+        nmap('[d', '<cmd>lua vim.diagnostic.jump({ count = -1})<CR>')
+        nmap(']d', '<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>')
         nmap('<leader>p', '', {
             callback = function()
                 format_buffer(buf, client.name)

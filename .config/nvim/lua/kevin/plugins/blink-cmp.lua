@@ -11,6 +11,7 @@ return {
                 require('luasnip.loaders.from_vscode').lazy_load()
             end,
         },
+        { 'folke/lazydev.nvim', opts = {} },
     },
     version = '1.*',
     opts = {
@@ -50,7 +51,15 @@ return {
         },
 
         sources = {
-            default = { 'buffer', 'lsp', 'snippets', 'path', 'omni' },
+            default = { 'lazydev', 'buffer', 'lsp', 'snippets', 'path', 'omni' },
+            providers = {
+                lazydev = {
+                    name = 'LazyDev',
+                    module = 'lazydev.integrations.blink',
+                    --make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
+                },
+            },
         },
         fuzzy = { implementation = 'prefer_rust' },
         snippets = {
